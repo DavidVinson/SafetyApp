@@ -11,6 +11,13 @@ page MainPage {
   component: import Main from "@client/MainPage.tsx"
 }
 
+entity User {=psl
+  id String @uuid()
+  UserName String
+  Email @unique
+  Password String
+psl=}
+
 entity Person {=psl
   id Int @id @default(autoincrement())
   FName String
