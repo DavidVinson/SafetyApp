@@ -12,7 +12,7 @@ page MainPage {
 }
 
 entity User {=psl
-  id String @uuid()
+  id String @id @uuid()
   UserName String
   Email @unique
   Password String
