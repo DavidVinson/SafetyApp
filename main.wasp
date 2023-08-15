@@ -12,9 +12,9 @@ page MainPage {
 }
 
 entity User {=psl
-  id String @id @uuid()
+  id Int @id @default(autoincrement())
   UserName String
-  Email @unique
+  Email String @unique
   Password String
 psl=}
 
