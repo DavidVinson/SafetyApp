@@ -2,10 +2,30 @@ app SafetyApp {
   wasp: {
     version: "^0.11.2"
   },
-  title: "SafetyApp"
+  title: "SafetyApp",
+  db: {system: PostgreSQL}
 }
 
 route RootRoute { path: "/", to: MainPage }
 page MainPage {
-  component: import Main from "@client/MainPage.jsx"
+  component: import Main from "@client/MainPage.tsx"
 }
+
+entity Person {=psl
+  id Int @id @default(autoincrement())
+  FName String
+  LName String
+  Email String @unique
+  Document Document?
+psl=}
+
+entity Document {=psl
+id Int @id @default(autoincrement())
+person Person @relation(fields: [PID], references: [id])
+PID Int @unique
+BBPA1 Boolean @default(false)
+DtBBPA1 DateTime 
+BBPA4 Boolean @default(false)
+DtBBPA4 DateTime 
+
+psl=}
