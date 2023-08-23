@@ -24,11 +24,22 @@ entity Person {=psl
   LName String
   Email String @unique
   Document Document?
+  SchoolId String
+  Department String
+  Position String
+  Comments String
+  IsEmployee Boolean @default(false)
+  IsActive Boolean @default(true)
+  IsPI Boolean @default(false)
+  PI1 String
+  PI2 String
+  UDate @updatedAt
+  
 psl=}
 
 entity Document {=psl
 id Int @id @default(autoincrement())
-person Person @relation(fields: [PID], references: [id])
+Person Person @relation(fields: [PID], references: [id])
 PID Int @unique
 BBPA1 Boolean @default(false)
 DtBBPA1 DateTime 
